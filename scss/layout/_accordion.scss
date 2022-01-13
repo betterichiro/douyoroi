@@ -1,0 +1,143 @@
+.faq {
+  &__inner {
+    padding: 60px 90px;
+    margin-bottom: 100px;
+    background-color: #c2c2d01a;
+  }
+  &-label {
+    box-shadow: 0 10px 55px rgba(0,0,0,.08);
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    font-size: 16px;
+    padding: 24px;
+    position: relative;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      content: "";
+      background: url(/assets/images/faq_off.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 25px;
+      height: 25px;
+      right: 24px;
+    }
+  }
+  &-checkbox {
+    display: none;
+    &:checked + .faq-label::after {
+      content: "";
+      background: url(/assets/images/faq_on.svg);
+    }
+    &:checked + .faq-label + .faq-accordion {
+      max-height: 120px;
+      visibility: visible;
+    }
+  }
+  &-answer {
+    display: block;
+    color: #fff;
+    padding: 40px 24px 40px 48px;
+    text-indent: -1em;
+    background-color: #2575fccc;
+    font-size: 16px;
+    text-align: left;
+  }
+  &-accordion {
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all .5s ease-in-out;
+  }
+  &-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &__overlay {
+      background-color: rgba(30,30,30,0.9);
+      width: 100%;
+      height: 100%;
+    }
+    &__container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background-color: #fff;
+      width: 70%;
+      height: 400px;
+      padding: 20px 30px;
+      overflow-y: auto;
+    }
+    &__title {
+      text-align: center;
+      padding: 16px 0 32px;
+      font-weight: bold;
+    }
+  }
+}
+
+.modal-checkbox {
+  display: none;
+  &:checked + [data-modal="trigger"] + .faq-modal {
+    display: block;
+  }
+  &:checked + [data-modal="trigger"] {
+    position: fixed;
+    z-index: 1;
+    bottom: 130px;
+  }
+  &:checked + [data-modal="trigger"]::after {
+    content: "Close the section";
+  }
+}
+
+[data-modal="trigger"] {
+  display: block;
+  margin-top: 24px;
+  color: #108de8;
+  font-size: 16px;
+  cursor: pointer;
+  &::after {
+    content: "Know more about that";
+  }
+}
+
+@include sp {
+  .faq {
+    &__inner {
+      padding: 20px 30px;
+    }
+    &-label {
+      padding: 24px 36px 24px 24px;
+      &::after {
+        right: 15px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+    &-checkbox {
+       &:checked+.faq-label+.faq-accordion {
+         max-height: 200px;
+       }
+    }
+    &-modal {
+      &__container {
+        overflow-y: auto;
+      }
+      &__title {
+        font-size: 20px;
+      }
+    }
+  }
+  .modal-checkbox {
+    &:checked+[data-modal="trigger"] {
+      bottom: 72px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.concept {
+  &__cat {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__img {
+    width: calc(50% - 40px);
+  }
+  &__text {
+    width: calc(50% - 40px);
+    height: 630px;
+    overflow-y: auto;
+  }
+  &__sentence  p {
+    display: block;
+    margin-bottom: 16px;
+  }
+}
+
+@include sp {
+  .concept {
+     &__cat {
+       display: block;
+     }
+     &__img {
+       width: 100%;
+       margin-bottom: 30px;
+     }
+     &__text {
+       width: 100%;
+       height: 400px;
+     }
+  }
+}
