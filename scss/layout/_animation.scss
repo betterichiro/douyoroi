@@ -1,7 +1,7 @@
 [data-fadeIn] {
   opacity: 0;
-  transform: translateY(-160px);
-  transition : all .6s ease-in;
+  transform: translateY(140px);
+  transition : all .4s ease-in;
   &.is-over {
     opacity: 1;
     transform: translateY(0);
